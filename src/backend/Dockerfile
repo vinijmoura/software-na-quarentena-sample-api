@@ -5,10 +5,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
 WORKDIR /src
-COPY ["src/SwNaQuarentena.Api/SwNaQuarentena.Api.csproj", "src/SwNaQuarentena.Api/"]
-RUN dotnet restore "src/SwNaQuarentena.Api/SwNaQuarentena.Api.csproj"
+COPY ["src/backend/SwNaQuarentena.Api.csproj", "src/backend/"]
+RUN dotnet restore "src/backend/SwNaQuarentena.Api.csproj"
 COPY . .
-WORKDIR "/src/src/SwNaQuarentena.Api"
+WORKDIR "/src/src/backend"
 RUN dotnet build "SwNaQuarentena.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
