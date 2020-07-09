@@ -1,15 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using SwNaQuarentena.Api.Repositories;
 
 namespace SwNaQuarentena.Api
 {
@@ -27,6 +21,8 @@ namespace SwNaQuarentena.Api
         {
             services.AddControllers();
             services.AddHealthChecks();
+
+            services.AddTransient<IQuoteRepository, QuoteRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +42,7 @@ namespace SwNaQuarentena.Api
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                endpoints.MapHealthChecks("/tavivo");
+                endpoints.MapHealthChecks("/check");
             });
         }
     }
