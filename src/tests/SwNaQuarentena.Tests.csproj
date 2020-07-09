@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SwNaQuarentena.Api\SwNaQuarentena.Api.csproj" />
+    <ProjectReference Include="..\backend\SwNaQuarentena.Api.csproj" />
   </ItemGroup>
 
 </Project>
